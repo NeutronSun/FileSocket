@@ -28,6 +28,11 @@ public class Client {
             FileInputStream fileInputStream = new FileInputStream(file);
             int bytes = fileInputStream.read(buffer,0,buffer.length);
             dataOutputStream.write(buffer,0, bytes);        
+
+
+
+
+            
             
             putInServer.close();
             in.close();
