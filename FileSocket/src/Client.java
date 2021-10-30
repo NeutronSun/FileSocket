@@ -57,7 +57,7 @@ public class Client {
         byte[] buffer = new byte[1000*1024];
         DataInputStream dataInputStream = new DataInputStream(echoSocket.getInputStream());
         int bytes = dataInputStream.read(buffer,0,buffer.length);
-        FileOutputStream fileOutputStream = new FileOutputStream("./CarpetaClient/" + fileName);
+        FileOutputStream fileOutputStream = new FileOutputStream("./FolderClient/" + fileName);
         fileOutputStream.write(buffer,0,bytes);
         System.out.println("nothing went wrong");
     }

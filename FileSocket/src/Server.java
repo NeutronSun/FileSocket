@@ -22,13 +22,15 @@ public class Server {
                 switch (caseCase){
                     case "sentToMe":
                     //send to the client all the file name
-                    listFilesForFolder(new File("./CarpetaServer"));
+                    listFilesForFolder(new File("./FolderServer"));
                     putInClient.println("select a file");
                     userInput = getFromItSelf.readLine();
                     sendFile(userInput);
                     break;
 
                     case "byebye":
+                    serverSocket.close();
+                    clientSocket.close();
                     return;
                 }
             }
@@ -37,23 +39,20 @@ public class Server {
         }
     }
 
-    public static void listFilesForFolder(final File folder) {
+    public static void listFilesForFolder(File folder) {
         int cont = 0;
-        for (final File fileEntry : folder.listFiles()) {
-            if (fileEntry.isDirectory()) {
-                listFilesForFolder(fileEntry);
-            } else {
-                putInClient.println("File " + cont + ":" + fileEntry.getName());
-                System.out.println(fileEntry.getName());
-                cont++;
-            }
+        File filesList[] = folder.listFiles();
+        for(File file : filesList){
+            putInClient.println("File " + (cont + 1) + ":" + file.getName());
+            System.out.println(file.getName());
+            cont++;
         }
         putInClient.println("end");
     }
 
     public static void sendFile(String fineName) throws IOException{
         byte[] buffer = new byte[1000*1024];
-        FileInputStream fileInputStream = new FileInputStream("./CarpetaServer/" + fineName);
+        FileInputStream fileInputStream = new FileInputStream("./FolderServer/" + fineName);
         int bytes = fileInputStream.read(buffer,0,buffer.length);
         dataOutputStream.write(buffer,0, bytes); 
     }
