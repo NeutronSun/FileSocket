@@ -1,19 +1,41 @@
 import java.io.*;
 import java.net.*;
-
 import java.io.IOException;
 
+/**
+ * 
+ * @author Lorenzo Sanseverino
+ * @author Valerio Gallo
+ * Classe che instanzia il client, può decidere quale file presente nella cartella del server copiare nella cartella del client.
+ *
+ */
 public class Client {
+	
+	/**
+	 * Oggetto che crea il socket del client.
+	 */
     private static Socket echoSocket;
+    /**
+     * Oggetto di tipo PrintWriter che serve per mandare in output i dati al server.
+     */
     private static PrintWriter putInServer;
+    /**
+     * Oggetto che prende in input i dati dalla console.
+     */
     private static BufferedReader in;
+    /**
+     * Oggetto che prende in input i dati dal server.
+     */
     private static BufferedReader read;
+    
+    /**
+     * Nel main viene prima istanziato il socket, poi viene preso in input ciò che l'utente vuole fare, tra selezionare un file dalla cartella del server e uscire dal programma.
+     * 
+     */
     public static void main(String[] args){
-        //String hostName = Inet4Address.getLocalHost().getHostAddress();
-        int portNumber = 77;
-        boolean win = false;
+    int portNumber = 77;
+    boolean win = false;
         try{
-
             String hostName = Inet4Address.getLocalHost().getHostAddress();
             echoSocket = new Socket(hostName, portNumber);
             putInServer = new PrintWriter(echoSocket.getOutputStream(), true);
@@ -53,9 +75,21 @@ public class Client {
         }
     }
 
+    /**
+     * 
+     * @param fileName Nome del file da copiare nella cartella del client.
+     * @throws IOException In caso ci siano dei problemi.
+     * Viene utilizzato un buffer di tipo byte, nel quale vengono copiati tutti i byte del file del server, poi copiati nella cartella di destinazione.
+     */
     public static void getFile(String fileName) throws IOException{
+    	/**
+    	 * Buffer di tipo byte.
+    	 */
         byte[] buffer = new byte[1000*1024];
         DataInputStream dataInputStream = new DataInputStream(echoSocket.getInputStream());
+        /**
+         * Byte nei quali vanno copiati i dati del file originale.
+         */
         int bytes = dataInputStream.read(buffer,0,buffer.length);
         FileOutputStream fileOutputStream = new FileOutputStream("./FolderClient/" + fileName);
         fileOutputStream.write(buffer,0,bytes);

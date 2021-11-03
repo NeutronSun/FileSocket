@@ -1,18 +1,14 @@
-## Getting Started
+# FileSocket
+##### A server that storages files and the client can download them
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Built With
 
-## Folder Structure
+- Java
 
-The workspace contains two folders by default, where:
+## Members
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- **Lorenzo Sanseverino**
+- **Valerio Gallo**
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## 🤝 Support
+We really hope that this is a good program and maybe give us a good mark --> 10 ❤️❤️❤️❤️❤️❤️
