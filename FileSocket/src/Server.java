@@ -78,6 +78,7 @@ public class Server {
             System.out.println(file.getName());
             cont++;
         }
+        
         putInClient.println("end");
     }
 
